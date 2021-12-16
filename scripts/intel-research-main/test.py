@@ -18,6 +18,7 @@ import win32con
 #df = pd.DataFrame(columns=['init_time', 'total_time', 'times'])
 #df.to_csv('./metrics_' + datetime.datetime.utcnow().strftime("%m-%d-%y_%H-%M-%S") + '.csv')
 
-
-whnd = win32gui.FindWindow(None, "Minecraft 1.18.1")
-win32gui.ShowWindow(whnd, win32con.SW_MAXIMIZE)
+import wmi
+c = wmi.WMI()
+for gpu in c.Win32_VideoController():
+    print(gpu)

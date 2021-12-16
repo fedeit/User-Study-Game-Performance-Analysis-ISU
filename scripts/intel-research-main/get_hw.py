@@ -18,12 +18,12 @@ def getDrives():
     return drives
 
 def getGPUs():
+    c = wmi.WMI()
     gpus_list = []
-    gpus = GPUtil.getGPUs()
-    for gpu in gpus:
-        name = gpu.name
-        id = gpu.id
-        uuid = gpu.uuid
+    for gpu in c.Win32_VideoController():
+        name = gpu.Caption
+        id = gpu.DeviceID
+        uuid = gpu.PNPDeviceID
         info = {
             'name': name,
             'id': id,
