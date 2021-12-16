@@ -1,3 +1,5 @@
 
 notebooks/.ipynb_checkpoints
 data/interim/.ipynb_checkpoints
+scripts/intel-research-main/client_secrets.json
+scripts/intel-research-main/mycreds.txt
