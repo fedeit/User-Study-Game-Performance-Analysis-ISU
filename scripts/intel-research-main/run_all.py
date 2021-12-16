@@ -19,8 +19,6 @@ METRICS_PATH = './results/metrics_' + execution_time + '.json'
 
 # Get hardware info and dump to file
 hardware = get_hw.getHardwareInfo()
-with open(HARDWARE_INFO_PATH, 'w+') as f:
-    json.dump(hardware, f)
 
 # Start OpenHardwareMonitor
 ohm_utils.killOHM()
@@ -128,6 +126,9 @@ for game in games:
 
 # dump to json for later
 df.to_json(METRICS_PATH)
+
+with open(HARDWARE_INFO_PATH, 'w+') as f:
+    json.dump(hardware, f)
 
 # Kill Open Hardware Monitor and move log to new path
 ohm_utils.killOHM()

@@ -95,7 +95,7 @@ def test(game, params):
             pyautogui.click(point[0], point[1])
             first_click = False
         # Move to the location of the button - duration of move defined in params['move_time']
-        pyautogui.moveTo(point[0], point[1], params['move_time'], pyautogui.easeInOutQuad)
+        pyautogui.moveTo(point[0], point[1], params['move_time'] + 0.2, pyautogui.easeInOutQuad)
         # If image name contains ONECLICK click once, otherwise normal double click
         if 'ONECLICK' in btn_img: 
             pyautogui.click()
