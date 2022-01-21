@@ -1,5 +1,9 @@
 
 notebooks/.ipynb_checkpoints
 data/interim/.ipynb_checkpoints
-scripts/intel-research-main/client_secrets.json
-scripts/intel-research-main/mycreds.txt
+scripts/client_secrets.json
+scripts/trash
+scripts/mycreds.txt
+scripts/results
+scripts/LoL/4_Password.txt
+scripts/LoL/2.2_Username.txt
