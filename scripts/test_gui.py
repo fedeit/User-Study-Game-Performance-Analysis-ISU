@@ -72,6 +72,7 @@ def maximizeWindows(params):
     for name in params['window_names']:
         whnd = win32gui.FindWindow(None, name)
         win32gui.ShowWindow(whnd, win32con.SW_MAXIMIZE)
+        win32gui.SetFocus(whnd)
 
 def intIndexSort(a):
     filename = splitext(basename(a))[0]
@@ -105,14 +106,18 @@ def test(game, params, iteration):
             file = open(action, 'r')
             strings = file.read().splitlines()
             for key in strings:
-                print(f'...waiting 1 sec and pressing {key}')
+                print(f'[INFO]...waiting 1 sec and pressing {key}')
                 time.sleep(1)
                 pydirectinput.press(key)
+            # Record the timestamp of when the button was found
+            times.append(time.time() - init_time)
             continue
         elif filetype == '.wait':
             file = open(action, 'r')
             strings = file.readlines()
             time.sleep(int(strings[0]))
+            # Record the timestamp of when the button was found
+            times.append(time.time() - init_time)
             continue
         # If not text, it's an image
         btn_img = action
@@ -130,7 +135,7 @@ def test(game, params, iteration):
             pydirectinput.click(point[0], point[1])
             first_click = False
         # Move to the location of the button - duration of move defined in params['move_time']
-        pyautogui.moveTo(point[0], point[1], params['move_time'] + 0.2, pyautogui.easeInOutQuad)
+        pydirectinput.moveTo(point[0], point[1])
         # If image name contains ONECLICK click once, otherwise normal double click
         if 'ONECLICK' in btn_img: 
             pydirectinput.click(point[0], point[1])
