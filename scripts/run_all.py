@@ -25,7 +25,7 @@ ohm_utils.removeLog()
 ohm_utils.runOHM()
 
 # Get games from game_def file
-games = game_def.allGames()
+games = [game_def.civVI]
 # how many iterations
 iterations = 10
 
@@ -35,7 +35,7 @@ df = pd.DataFrame(columns=['game_name', 'game_params', 'init_time', 'total_time'
 for game in games:
     times = []
     for iteration in range(iterations): # iterate through how many trials we want to test
-        print(f'[INFO] Iteration {iteration + 1} @ {datetime.datetime.utcnow().strftime("%H:%M:%S")}') # print out current date and iteration
+        print(f'[INFO]========== Iteration {iteration + 1} @ {datetime.datetime.utcnow().strftime("%H:%M:%S")} ==========') # print out current date and iteration
         metrics = test_gui.test(game['name'], game['params'], iteration) # get game specific metrics
         level = metrics['times'][game['times_level'][0]] - metrics['times'][game['times_level'][1]] # get game level load time
         load = metrics['times'][game['times_load'][0]] - metrics['times'][game['times_load'][1]] # get game load time.
