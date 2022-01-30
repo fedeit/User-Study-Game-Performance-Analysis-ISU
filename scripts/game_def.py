@@ -91,3 +91,4 @@ civV = {
 }
 
 def allGames():
+    return [hearthstone, fortnite, leagueOfLegends, minecraft, apex, csgo, r6, civV]
