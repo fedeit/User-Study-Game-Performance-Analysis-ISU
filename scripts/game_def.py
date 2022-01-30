@@ -79,8 +79,15 @@ r6 = {
     'times_level': [8, 6]
 }
 
-# games we want to run
-games = [r6]
+civV = {
+    'name' : 'CivV',
+    'params' : {
+        'move_time': 0.5,
+        'kill_mode' : 'None',
+        'window_names': ['Civilization V']
+    },
+    'times_load': [1, 2],
+    'times_level': [4, 5]
+}
 
 def allGames():
-    return games
