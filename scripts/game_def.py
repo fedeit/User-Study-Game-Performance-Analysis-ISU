@@ -75,7 +75,7 @@ r6 = {
         'kill_mode' : 'None',
         'window_names': ['Rainbow Six']
     },
-    'times_load': [0, 1],
+    'times_load': [1, 0],
     'times_level': [8, 6]
 }
 
@@ -86,9 +86,20 @@ civV = {
         'kill_mode' : 'None',
         'window_names': ['Civilization V']
     },
-    'times_load': [1, 2],
-    'times_level': [4, 5]
+    'times_load': [2, 1],
+    'times_level': [5, 4]
+}
+
+civVI = {
+    'name' : 'CivVI',
+    'params' : {
+        'move_time': 0.5,
+        'kill_mode' : 'None',
+        'window_names': ['Sid Meier\s Civilization VI (DX12)']
+    },
+    'times_load': [4, 1],
+    'times_level': [8, 6]
 }
 
 def allGames():
-    return [hearthstone, fortnite, leagueOfLegends, minecraft, apex, csgo, r6, civV]
+    return [hearthstone, fortnite, leagueOfLegends, minecraft, apex, csgo, r6, civVI]
