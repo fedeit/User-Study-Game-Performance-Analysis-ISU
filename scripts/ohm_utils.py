@@ -16,6 +16,11 @@ def runOHM():
     whnd = win32gui.FindWindow(None, 'Open Hardware Monitor')
     win32gui.ShowWindow(whnd, win32con.SW_MINIMIZE)
 
+def removeLog():
+    print('Removing old logs')
+    for f in glob(ohm_log_path):
+        os.remove(f)
+
 def killOHM():
     print('Killing OHM')
     # Get all running process

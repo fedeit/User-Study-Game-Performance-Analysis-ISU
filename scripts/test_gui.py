@@ -1,11 +1,12 @@
 from glob import glob
 from sys import argv
 import pyautogui
+import pydirectinput
 import time
 import win32gui
 import win32con
 import wmi
-from os.path import basename, splitext
+from os.path import basename, splitext, isdir
 
 def killWindow(params):
     """
@@ -38,13 +39,13 @@ def killWindow(params):
                     ti += 1
     elif params['kill_mode'] == 'keyboard':
         # Press alt+f4
-        pyautogui.keyDown('alt')
-        pyautogui.keyDown('f4')
+        pydirectinput.keyDown('alt')
+        pydirectinput.keyDown('f4')
         # Wait 0.5 seconds
         time.sleep(0.5)
         # Release the alt+f4 keypress
-        pyautogui.keyUp('f4')
-        pyautogui.keyUp('alt')
+        pydirectinput.keyUp('f4')
+        pydirectinput.keyUp('alt')
         time.sleep(0.5)
     
 def waitAndLocate(btn_img, params):
@@ -87,16 +88,33 @@ def test(game, params, iteration):
     first_click = True
     times = []
     init_time = time.time()
+    if (not isdir(game)):
+        raise NameError("Game folder does not exist!")
     # Get each image in the directory called with the Game name
     for action in sorted(glob(game + '/*.*'), key=intIndexSort):
         print('[INFO] Looking for ' + action)
-        if (splitext(action)[1] == '.txt'):
+        filetype = splitext(action)[1]
+        if (filetype == '.txt'):
             file = open(action, 'r')
             strings = file.readlines()
             keyboard_string = strings[iteration]
-            pyautogui.write(keyboard_string, 0.05)
+            pydirectinput.write(keyboard_string, 0.05)
             file.close()
             continue
+        elif filetype == '.action':
+            file = open(action, 'r')
+            strings = file.read().splitlines()
+            for key in strings:
+                print(f'...waiting 1 sec and pressing {key}')
+                time.sleep(1)
+                pydirectinput.press(key)
+            continue
+        elif filetype == '.wait':
+            file = open(action, 'r')
+            strings = file.readlines()
+            time.sleep(int(strings[0]))
+            continue
+        # If not text, it's an image
         btn_img = action
         # Locate the button using the image in the folder, wait until found
         res = waitAndLocate(btn_img, params)
@@ -104,17 +122,20 @@ def test(game, params, iteration):
         times.append(time.time() - init_time)
         # Get the center point of the button
         point = pyautogui.center(res)
+        # If NO_CLICK option, skip click sequence
+        if 'NO_CLICK' in btn_img:
+            continue
         # If this is the first click, click twice to focus on the window
         if first_click:
-            pyautogui.click(point[0], point[1])
+            pydirectinput.click(point[0], point[1])
             first_click = False
         # Move to the location of the button - duration of move defined in params['move_time']
         pyautogui.moveTo(point[0], point[1], params['move_time'] + 0.2, pyautogui.easeInOutQuad)
         # If image name contains ONECLICK click once, otherwise normal double click
         if 'ONECLICK' in btn_img: 
-            pyautogui.click(point[0], point[1])
+            pydirectinput.click(point[0], point[1])
         else:
-            pyautogui.doubleClick(point[0], point[1])
+            pydirectinput.doubleClick(point[0], point[1])
     # Compute total run time
     total_time = time.time() - init_time
     # Close the window once finished 
