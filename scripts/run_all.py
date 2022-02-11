@@ -8,6 +8,7 @@ import ohm_utils
 import cloud_upload
 import game_def
 import mailer
+import sys
 
 # Timestamp used for all files
 execution_time = datetime.datetime.utcnow().strftime("%m-%d-%y_%H-%M-%S")
@@ -37,7 +38,16 @@ for game in games:
     times = []
     for iteration in range(iterations): # iterate through how many trials we want to test
         print(f'[INFO]========== Iteration {iteration + 1} @ {datetime.datetime.utcnow().strftime("%H:%M:%S")} ==========') # print out current date and iteration
-        metrics = test_gui.test(game['name'], game['params'], iteration) # get game specific metrics
+        try:
+            metrics = test_gui.test(game['name'], game['params'], iteration) # get game specific metrics
+        except TimeoutError:
+            e = sys.exc_info()
+            mailer.notifyTimeout(str(e))
+            exit(1)
+        except:
+            e = sys.exc_info()
+            mailer.notifyError(str(e))
+            exit(1)
         level = metrics['times'][game['times_level'][0]] - metrics['times'][game['times_level'][1]] # get game level load time
         load = metrics['times'][game['times_load'][0]] - metrics['times'][game['times_load'][1]] # get game load time.
         df = df.append({

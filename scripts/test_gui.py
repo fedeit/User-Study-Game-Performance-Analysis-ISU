@@ -55,7 +55,12 @@ def waitAndLocate(btn_img, params):
     :param btn_img: path to the image of the button to look for
     :return: coordinates + dimensions of the button
     """ 
+    start = time.time()
     while True:
+        if time.time() - start > 30:
+            print("Timeout Error")
+            raise TimeoutError(f"wait and locate exceeded {str(time.time()-start)}")
+ 
          # Find window and maximize
         if 'no_fullscreen' not in params or params['no_fullscreen'] == False:
             maximizeWindows(params)
