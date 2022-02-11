@@ -29,6 +29,7 @@ leagueOfLegends = {
         'move_time' : 0.0,
         'kill_mode' : 'keyboard',
         'window_names': ['Riot Client Main', 'League of Legends'],
+        'no_fullscreen': True
     },
     'times_load': [0, 0],
     'times_level': [0, 0]
@@ -101,5 +102,49 @@ civVI = {
     'times_level': [8, 6]
 }
 
+gta = {
+    'name' : 'GTA5',
+    'params' : {
+        'move_time': 0.5,
+        'kill_mode' : 'None',
+        'window_names': ['Grand Theft Auto V']
+    },
+    'times_load': [1, 0],
+    'times_level': [2, 1]
+}
+
+overwatch = {
+    'name' : 'Overwatch',
+    'params' : {
+        'move_time': 0.5,
+        'kill_mode' : 'None',
+        'window_names': ['Overwatch']
+    },
+    'times_load': [2, 1],
+    'times_level': [7, 2]
+}
+
+pubg = {
+    'name' : 'PUBG',
+    'params' : {
+        'move_time': 0.5,
+        'kill_mode' : 'None',
+        'window_names': ['PLAYER UNKOWN\'S BATTLEGROUNDS']
+    },
+    'times_load': [1, 0],
+    'times_level': [2, 1]
+}
+
+assassincreed = {
+    'name' : 'AssassinCreed',
+    'params' : {
+        'move_time': 0.5,
+        'kill_mode' : 'None',
+        'window_names': ['Assassin\'s Creed® Odyssey']
+    },
+    'times_load': [1, 0],
+    'times_level': [3, 2]
+}
+
 def allGames():
-    return [hearthstone, fortnite, leagueOfLegends, minecraft, apex, csgo, r6, civVI]
+    return [hearthstone, fortnite, leagueOfLegends, minecraft, apex, csgo, r6, civVI, overwatch, pubg]
