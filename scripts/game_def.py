@@ -128,7 +128,7 @@ pubg = {
     'name' : 'PUBG',
     'params' : {
         'move_time': 0.5,
-        'kill_mode' : 'None',
+        'kill_mode' : 'keyboard',
         'window_names': ['PLAYER UNKOWN\'S BATTLEGROUNDS']
     },
     'times_load': [1, 0],
@@ -139,7 +139,7 @@ assassincreed = {
     'name' : 'AssassinCreed',
     'params' : {
         'move_time': 0.5,
-        'kill_mode' : 'None',
+        'kill_mode' : 'keyboard',
         'window_names': ['Assassin\'s Creed® Odyssey']
     },
     'times_load': [1, 0],
