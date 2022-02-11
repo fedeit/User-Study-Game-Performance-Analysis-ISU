@@ -7,6 +7,7 @@ import get_hw
 import ohm_utils
 import cloud_upload
 import game_def
+import mailer
 
 # Timestamp used for all files
 execution_time = datetime.datetime.utcnow().strftime("%m-%d-%y_%H-%M-%S")
@@ -68,3 +69,5 @@ with open(HARDWARE_INFO_PATH, 'w+') as f:
 cloud_upload.uploadFile(METRICS_PATH)
 cloud_upload.uploadFile(HARDWARE_INFO_PATH)
 cloud_upload.uploadFile(HARDWARE_LOG_PATH)
+
+mailer.notifyCompletion()

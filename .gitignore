@@ -8,3 +8,4 @@ scripts/results
 scripts/LoL/4_Password.txt
 scripts/LoL/2.2_Username.txt
 *.pyc
+scripts/.env
