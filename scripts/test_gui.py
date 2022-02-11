@@ -57,7 +57,8 @@ def waitAndLocate(btn_img, params):
     """ 
     while True:
          # Find window and maximize
-        maximizeWindows(params)
+        if 'no_fullscreen' not in params or params['no_fullscreen'] == False:
+            maximizeWindows(params)
         # Make foreground window full screen - replaced with exact window name lookup
         # win32gui.ShowWindow(win32gui.GetForegroundWindow(), win32con.SW_MAXIMIZE)
         # Look for the button on the screen
