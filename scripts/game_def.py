@@ -17,6 +17,7 @@ fortnite = {
     'params' : {
         'move_time' : 0.0,
         'kill_mode' : 'keyboard',
+        'process_name' : ['Fortnite'],
         'window_names': []
     },
     'times_load': [1, 0],
@@ -27,7 +28,7 @@ leagueOfLegends = {
     'name' : 'LoL',
     'params' : {
         'move_time' : 0.0,
-        'kill_mode' : 'keyboard',
+        'kill_mode' : 'None',
         'window_names': ['Riot Client Main', 'League of Legends'],
         'no_fullscreen': True
     },
@@ -96,7 +97,7 @@ civVI = {
     'params' : {
         'move_time': 0.5,
         'kill_mode' : 'None',
-        'window_names': ['Sid Meier\s Civilization VI (DX12)']
+        'window_names': ['Sid Meier\'s Civilization VI (DX12)']
     },
     'times_load': [4, 1],
     'times_level': [8, 6]
@@ -117,7 +118,7 @@ overwatch = {
     'name' : 'Overwatch',
     'params' : {
         'move_time': 0.5,
-        'kill_mode' : 'None',
+        'kill_mode' : 'keyboard',
         'window_names': ['Overwatch']
     },
     'times_load': [2, 1],
@@ -147,4 +148,5 @@ assassincreed = {
 }
 
 def allGames():
-    return [hearthstone, fortnite, leagueOfLegends, minecraft, apex, csgo, r6, civVI, overwatch, pubg]
+    #return [gta]
+    return [pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, civVI, overwatch]
