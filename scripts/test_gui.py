@@ -1,11 +1,14 @@
 from glob import glob
 from sys import argv
 import pyautogui
-import pydirectinput
+import pydirectinput as mdev, pydirectinput
 import time
 import win32gui
 import win32con
+import win32api
+import win32process as wproc
 import wmi
+import hardware as hw
 from os.path import basename, splitext, isdir
 
 def killWindow(params):
@@ -41,11 +44,19 @@ def killWindow(params):
         # Press alt+f4
         pydirectinput.keyDown('alt')
         pydirectinput.keyDown('f4')
+
+        #hardware.keyDown(130)
+        #hardware.keyDown(197)
+
         # Wait 0.5 seconds
         time.sleep(0.5)
         # Release the alt+f4 keypress
         pydirectinput.keyUp('f4')
         pydirectinput.keyUp('alt')
+
+        #hardware.keyDown(197)
+        #hardware.keyDown(130)
+
         time.sleep(0.5)
     
 def waitAndLocate(btn_img, params):
@@ -57,7 +68,7 @@ def waitAndLocate(btn_img, params):
     """ 
     start = time.time()
     while True:
-        if time.time() - start > 30:
+        if time.time() - start > (5*60):
             print("Timeout Error")
             raise TimeoutError(f"wait and locate exceeded {str(time.time()-start)}")
  
@@ -76,9 +87,15 @@ def waitAndLocate(btn_img, params):
 
 def maximizeWindows(params): 
     for name in params['window_names']:
-        whnd = win32gui.FindWindow(None, name)
-        win32gui.ShowWindow(whnd, win32con.SW_MAXIMIZE)
-        win32gui.SetFocus(whnd)
+        try:
+            whnd = win32gui.FindWindow(None, name)
+            win32gui.ShowWindow(whnd, win32con.SW_MAXIMIZE)
+            # remote_thread, _ = wproc.GetWindowThreadProcessId(whnd)
+            # wproc.AttachThreadInput(win32api.GetCurrentThreadId(), remote_thread, True)
+            # win32gui.SetFocus(whnd)
+        except:
+            print('Could not focus window')
+            return
 
 def intIndexSort(a):
     filename = splitext(basename(a))[0]
@@ -92,13 +109,13 @@ def test(game, params, iteration):
     :param params: game specific object containing a 'kill_mode' and optional a 'process_name'
     :return: metrics for the specific game
     """ 
-    first_click = True
     times = []
     init_time = time.time()
     if (not isdir(game)):
         raise NameError("Game folder does not exist!")
     # Get each image in the directory called with the Game name
     for action in sorted(glob(game + '/*.*'), key=intIndexSort):
+        time.sleep(1.5)
         print('[INFO] Looking for ' + action)
         filetype = splitext(action)[1]
         if (filetype == '.txt'):
@@ -133,20 +150,21 @@ def test(game, params, iteration):
         times.append(time.time() - init_time)
         # Get the center point of the button
         point = pyautogui.center(res)
+        mdev.moveTo(point[0], point[1])
         # If NO_CLICK option, skip click sequence
         if 'NO_CLICK' in btn_img:
             continue
-        # If this is the first click, click twice to focus on the window
-        if first_click:
-            pydirectinput.click(point[0], point[1])
-            first_click = False
-        # Move to the location of the button - duration of move defined in params['move_time']
-        pydirectinput.moveTo(point[0], point[1])
         # If image name contains ONECLICK click once, otherwise normal double click
         if 'ONECLICK' in btn_img: 
-            pydirectinput.click(point[0], point[1])
+            print('...one click')
+            hw.click(point[0], point[1])
+        elif 'MULTI' in btn_img:
+            for _ in range(10):
+                hw.doubleClick(point[0], point[1])
         else:
-            pydirectinput.doubleClick(point[0], point[1])
+            print('...double click')
+            hw.doubleClick(point[0], point[1])
+            hw.doubleClick(point[0], point[1])
     # Compute total run time
     total_time = time.time() - init_time
     # Close the window once finished 
