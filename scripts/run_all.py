@@ -27,22 +27,31 @@ ohm_utils.removeLog()
 ohm_utils.runOHM()
 
 # Get games from game_def file
-games = [game_def.civVI]
+# games = game_def.allGames()
+games = game_def.allGames()
 # how many iterations
 iterations = 10
 
 df = pd.DataFrame(columns=['game_name', 'game_params', 'init_time', 'total_time', 'times'])
 
+startTime = time.time()
+
 # iterate through all of the games 
 for game in games:
     times = []
-    for iteration in range(iterations): # iterate through how many trials we want to test
+    iteration = 0
+    while iteration < iterations: # iterate through how many trials we want to test
         print(f'[INFO]========== Iteration {iteration + 1} @ {datetime.datetime.utcnow().strftime("%H:%M:%S")} ==========') # print out current date and iteration
         try:
             metrics = test_gui.test(game['name'], game['params'], iteration) # get game specific metrics
         except TimeoutError:
             e = sys.exc_info()
             mailer.notifyTimeout(str(e))
+            while('y' not in input('Continue? y/n: ')): continue
+            iteration -= 1
+            print(f'ALERT!: Restarting iteration {iteration}')
+            continue
+        except KeyboardInterrupt:
             exit(1)
         except:
             e = sys.exc_info()
@@ -60,8 +69,11 @@ for game in games:
             'times' : json.dumps(metrics['times']),
         }, ignore_index=True) # append all new data data into pandas and dataframe so we can see the data later
         # wait 10 seconds before the next game
-        print(f'[INFO] Waiting 10 seconds')
+        print(f'[INFO] Waiting 20 seconds')
         time.sleep(20)
+        iteration += 1
+
+print(f"Total Runtime: {str(time.time()-startTime)}")
 
 # dump to json for later
 df.to_json(METRICS_PATH)
@@ -80,4 +92,5 @@ cloud_upload.uploadFile(METRICS_PATH)
 cloud_upload.uploadFile(HARDWARE_INFO_PATH)
 cloud_upload.uploadFile(HARDWARE_LOG_PATH)
 
+# sending email for completetion
 mailer.notifyCompletion()
