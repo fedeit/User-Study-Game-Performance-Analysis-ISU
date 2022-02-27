@@ -113,6 +113,7 @@ def test(game, params, iteration):
     init_time = time.time()
     if (not isdir(game)):
         raise NameError("Game folder does not exist!")
+    i = 0
     # Get each image in the directory called with the Game name
     for action in sorted(glob(game + '/*.*'), key=intIndexSort):
         time.sleep(1.5)
@@ -150,21 +151,31 @@ def test(game, params, iteration):
         times.append(time.time() - init_time)
         # Get the center point of the button
         point = pyautogui.center(res)
-        mdev.moveTo(point[0], point[1])
+
+        x = point[0]
+        y = point[1] - 25 if game == 'CivVI' and i > 1 else point[1]
+
+        mdev.moveTo(x, y)
         # If NO_CLICK option, skip click sequence
         if 'NO_CLICK' in btn_img:
             continue
         # If image name contains ONECLICK click once, otherwise normal double click
         if 'ONECLICK' in btn_img: 
             print('...one click')
-            hw.click(point[0], point[1])
+            mdev.click(x, y)
+            #hw.click(point[0], point[1])
         elif 'MULTI' in btn_img:
             for _ in range(10):
-                hw.doubleClick(point[0], point[1])
+                mdev.doubleClick(x, y)
+                #hw.doubleClick(point[0], point[1])
         else:
             print('...double click')
+            mdev.doubleClick(x, y)
+            '''hw.doubleClick(point[0], point[1])
             hw.doubleClick(point[0], point[1])
-            hw.doubleClick(point[0], point[1])
+            hw.doubleClick(point[0], point[1])'''
+
+        i = i + 1
     # Compute total run time
     total_time = time.time() - init_time
     # Close the window once finished 

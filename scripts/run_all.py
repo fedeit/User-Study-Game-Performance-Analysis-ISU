@@ -9,6 +9,11 @@ import cloud_upload
 import game_def
 import mailer
 import sys
+import pyautogui
+import pydirectinput
+
+pyautogui.FAILSAFE = False
+pydirectinput.FAILSAFE = False
 
 # Timestamp used for all files
 execution_time = datetime.datetime.utcnow().strftime("%m-%d-%y_%H-%M-%S")

@@ -122,7 +122,7 @@ overwatch = {
         'window_names': ['Overwatch']
     },
     'times_load': [2, 1],
-    'times_level': [7, 2]
+    'times_level': [6, 2]
 }
 
 pubg = {
@@ -149,4 +149,4 @@ assassincreed = {
 
 def allGames():
     #return [gta]
-    return [pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, civVI, overwatch]
+    return [civVI, overwatch, hearthstone, fortnite, minecraft, apex, csgo, r6, pubg]
