@@ -44,8 +44,9 @@ startTime = time.time()
 # iterate through all of the games 
 for game in games:
     times = []
-    iteration = 0
-    while iteration < iterations: # iterate through how many trials we want to test
+    iteration = -1
+    while iteration < iterations - 1: # iterate through how many trials we want to test
+        iteration += 1
         print(f'[INFO]========== Iteration {iteration + 1} @ {datetime.datetime.utcnow().strftime("%H:%M:%S")} ==========') # print out current date and iteration
         try:
             metrics = test_gui.test(game['name'], game['params'], iteration) # get game specific metrics
@@ -53,8 +54,8 @@ for game in games:
             e = sys.exc_info()
             mailer.notifyTimeout(str(e))
             while('y' not in input('Continue? y/n: ')): continue
+            print(f'ALERT!: Restarting iteration {iteration + 1}')
             iteration -= 1
-            print(f'ALERT!: Restarting iteration {iteration}')
             continue
         except KeyboardInterrupt:
             exit(1)
@@ -76,7 +77,6 @@ for game in games:
         # wait 10 seconds before the next game
         print(f'[INFO] Waiting 20 seconds')
         time.sleep(20)
-        iteration += 1
 
 print(f"Total Runtime: {str(time.time()-startTime)}")
 
