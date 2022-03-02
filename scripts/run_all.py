@@ -15,6 +15,8 @@ import pydirectinput
 pyautogui.FAILSAFE = False
 pydirectinput.FAILSAFE = False
 
+time.sleep(5)
+
 # Timestamp used for all files
 execution_time = datetime.datetime.utcnow().strftime("%m-%d-%y_%H-%M-%S")
 
@@ -56,6 +58,7 @@ for game in games:
             while('y' not in input('Continue? y/n: ')): continue
             print(f'ALERT!: Restarting iteration {iteration + 1}')
             iteration -= 1
+            time.sleep(10)
             continue
         except KeyboardInterrupt:
             exit(1)
