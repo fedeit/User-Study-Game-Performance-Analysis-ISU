@@ -118,8 +118,9 @@ overwatch = {
     'name' : 'Overwatch',
     'params' : {
         'move_time': 0.5,
-        'kill_mode' : 'keyboard',
-        'window_names': ['Overwatch']
+        'kill_mode' : 'os',
+        'process_name' : ['Overwatch', 'Battle'],
+        'window_names': ['Battle.net','Overwatch']
     },
     'times_load': [2, 1],
     'times_level': [6, 2]
