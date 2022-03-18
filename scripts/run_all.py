@@ -60,6 +60,14 @@ for game in games:
             iteration -= 1
             time.sleep(10)
             continue
+        except OSError:
+            e = sys.exc_info()
+            mailer.notifyError(str(e))
+            while('y' not in input('Continue? y/n: ')): continue
+            print(f'ALERT!: Restarting iteration {iteration + 1}')
+            iteration -= 1
+            time.sleep(10)
+            continue
         except KeyboardInterrupt:
             exit(1)
         except:

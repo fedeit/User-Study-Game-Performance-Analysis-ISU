@@ -68,7 +68,7 @@ def waitAndLocate(btn_img, params):
     """ 
     start = time.time()
     while True:
-        if time.time() - start > (5*60):
+        if time.time() - start > (3*60):
             print("Timeout Error")
             raise TimeoutError(f"wait and locate exceeded {str(time.time()-start)}")
  

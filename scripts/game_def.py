@@ -150,4 +150,4 @@ assassincreed = {
 
 def allGames():
     #return [gta]
-    return [pubg, civVI, hearthstone, fortnite, minecraft, apex, csgo, r6, overwatch]
+    return [civVI, pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, overwatch]
