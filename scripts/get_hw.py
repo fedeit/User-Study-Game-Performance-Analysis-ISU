@@ -1,7 +1,6 @@
-import GPUtil
-import platform
-import win32api
 import wmi
+from cpuinfo import get_cpu_info
+import json
 
 def getDrives():
     c = wmi.WMI()
@@ -35,12 +34,7 @@ def getGPUs():
     return gpus_list
 
 def getCPUInfo():
-    hw = platform.uname()
-    config = {
-        'platform': hw,
-        'cpu': platform.processor()
-    }
-    return config
+    return get_cpu_info()
 
 
 def getHardwareInfo():
@@ -54,3 +48,5 @@ def getHardwareInfo():
 if __name__ == '__main__':
     info = getHardwareInfo()
     print(info)
+    with open('./hw_conf.json', 'w+') as f:
+        json.dump(info, f)
