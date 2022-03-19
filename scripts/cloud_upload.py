@@ -28,3 +28,6 @@ def uploadFile(path):
 	f.SetContentFile(path)
 	f.Upload()
 	f = None
+
+if __name__ == '__main__':
+	uploadFile('./.env')
