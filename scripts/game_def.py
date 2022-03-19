@@ -107,8 +107,9 @@ gta = {
     'name' : 'GTA5',
     'params' : {
         'move_time': 0.5,
-        'kill_mode' : 'None',
-        'window_names': ['Grand Theft Auto V']
+        'kill_mode' : 'os',
+        'window_names': ['Grand Theft Auto V'],
+        'process_name': ['GTA5']
     },
     'times_load': [1, 0],
     'times_level': [2, 1]
@@ -149,5 +150,4 @@ assassincreed = {
 }
 
 def allGames():
-    #return [gta]
-    return [civVI, pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, overwatch]
+    return [gta, civVI, pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, overwatch]
