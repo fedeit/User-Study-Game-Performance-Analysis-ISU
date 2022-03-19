@@ -24,7 +24,7 @@ execution_time = datetime.datetime.utcnow().strftime("%m-%d-%y_%H-%M-%S")
 HARDWARE_LOG_PATH = './results/hardware_log_' + execution_time + '.csv'
 HARDWARE_INFO_PATH = './results/hardware_' + execution_time + '.json'
 METRICS_PATH = './results/metrics_' + execution_time + '.json'
-
+METRICS_BACKUP_PATH = './results/metrics_' + execution_time + '.csv'
 # Get hardware info and dump to file
 hardware = get_hw.getHardwareInfo()
 
@@ -60,7 +60,9 @@ for game in games:
             iteration -= 1
             time.sleep(10)
             continue
-        except OSError:
+        except KeyboardInterrupt:
+            exit(1)
+        except:
             e = sys.exc_info()
             mailer.notifyError(str(e))
             while('y' not in input('Continue? y/n: ')): continue
@@ -68,12 +70,6 @@ for game in games:
             iteration -= 1
             time.sleep(10)
             continue
-        except KeyboardInterrupt:
-            exit(1)
-        except:
-            e = sys.exc_info()
-            mailer.notifyError(str(e))
-            exit(1)
         level = metrics['times'][game['times_level'][0]] - metrics['times'][game['times_level'][1]] # get game level load time
         load = metrics['times'][game['times_load'][0]] - metrics['times'][game['times_load'][1]] # get game load time.
         df = df.append({
@@ -85,6 +81,7 @@ for game in games:
             'level' : level,
             'times' : json.dumps(metrics['times']),
         }, ignore_index=True) # append all new data data into pandas and dataframe so we can see the data later
+        df.to_csv(METRICS_BACKUP_PATH)
         # wait 10 seconds before the next game
         print(f'[INFO] Waiting 20 seconds')
         time.sleep(20)
