@@ -1,22 +1,13 @@
-import win32gui
-import win32con
-import win32api
-import win32process as wproc
+from glob import glob
+from sys import argv
+import wmi
+from os.path import basename, splitext, isdir
 
-def winEnumHandler( hwnd, ctx ):
-    if win32gui.IsWindowVisible( hwnd ):
-        print (hex(hwnd), win32gui.GetWindowText( hwnd ))
 
-win32gui.EnumWindows( winEnumHandler, None )
-
-def maximizeWindows(name): 
-    try:
-        whnd = win32gui.FindWindow(None, name)
-        win32gui.ShowWindow(whnd, win32con.SW_MAXIMIZE)
-        remote_thread, _ = wproc.GetWindowThreadProcessId(whnd)
-        wproc.AttachThreadInput(win32api.GetCurrentThreadId(), remote_thread, True)
-        win32gui.SetFocus(whnd)
-    except:
-        return
-
-maximizeWindows('Rainbow Six')
+# Get all running process
+ti = 0
+f = wmi.WMI()
+processes = f.Win32_Process()
+# Get each process name to kill
+for process in processes:
+    print(process.name)
