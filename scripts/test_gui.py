@@ -126,13 +126,22 @@ def test(game, params, iteration):
             pydirectinput.write(keyboard_string, 0.05)
             file.close()
             continue
+        elif filetype == '.exit':
+            p = {
+                'kill_mode' : 'keyboard'
+            }
+            killWindow(p)
+            continue
         elif filetype == '.action':
             file = open(action, 'r')
             strings = file.read().splitlines()
             for key in strings:
                 print(f'[INFO]...waiting 1 sec and pressing {key}')
                 time.sleep(1)
-                pydirectinput.press(key)
+                if game == 'AssassinCreed':
+                    pyautogui.press(key)
+                else:
+                    pydirectinput.press(key)
             # Record the timestamp of when the button was found
             times.append(time.time() - init_time)
             continue

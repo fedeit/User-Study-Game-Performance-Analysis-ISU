@@ -28,7 +28,7 @@ leagueOfLegends = {
     'name' : 'LoL',
     'params' : {
         'move_time' : 0.0,
-        'kill_mode' : 'None',
+        'kill_mode' : 'keyboard',
         'window_names': ['Riot Client Main', 'League of Legends'],
         'no_fullscreen': True
     },
@@ -146,8 +146,8 @@ assassincreed = {
         'window_names': ['Assassin\'s Creed® Odyssey']
     },
     'times_load': [1, 0],
-    'times_level': [3, 2]
+    'times_level': [7, 6]
 }
 
 def allGames():
-    return [gta, civVI, pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, overwatch]
+    return [assassincreed, leagueOfLegends]
