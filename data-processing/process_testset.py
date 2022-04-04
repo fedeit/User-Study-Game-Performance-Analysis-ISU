@@ -5,6 +5,7 @@ import json, os
 from tqdm import tqdm
 
 print(os.getcwd())
+print('Process testset')
 
 for test_group in tqdm(glob('data/raw/*/metrics_*.csv')):
     try:
@@ -18,3 +19,4 @@ for test_group in tqdm(glob('data/raw/*/metrics_*.csv')):
             process_trial.compute(row, hw_log, index, platform)
     except:
         print(f'ERROR: {test_group}')
+print('Process testset completed')
