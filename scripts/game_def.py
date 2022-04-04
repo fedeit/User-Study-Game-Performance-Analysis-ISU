@@ -32,8 +32,8 @@ leagueOfLegends = {
         'window_names': ['Riot Client Main', 'League of Legends'],
         'no_fullscreen': True
     },
-    'times_load': [0, 0],
-    'times_level': [0, 0]
+    'times_load': [2, 1],
+    'times_level': [14, 8]
 }
 
 minecraft = {
@@ -150,4 +150,4 @@ assassincreed = {
 }
 
 def allGames():
-    return [assassincreed, leagueOfLegends]
+    return [gta, civVI, pubg, hearthstone, fortnite, minecraft, apex, csgo, r6, overwatch, assassincreed, leagueOfLegends]

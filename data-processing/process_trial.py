@@ -28,11 +28,11 @@ def compute(trial, hwlogpath, index, platform):
     loadEnd = trialStart + timedelta(seconds=trial['times'][idxLoad[0]])
 
     hw_df = getHardwareLog(loadStart, loadEnd, hwlogpath)
-    hw_df.to_csv(f'data/processed/hw-study/{platform}/{trial["game_name"]}-game-{(index % 10)}.csv')
+    hw_df.to_csv(f'data/processed/hw-study/{platform}/{trial["game_name"]}-game-{trial["iteration"]}.csv')
 
     idxLevel = getGame(trial['game_name'])['times_level']
     levelStart = trialStart + timedelta(seconds=trial['times'][idxLevel[1]])
     levelEnd = trialStart + timedelta(seconds=trial['times'][idxLevel[0]])
     
     hw_df = getHardwareLog(levelStart, levelEnd, hwlogpath)
-    hw_df.to_csv(f'data/processed/hw-study/{platform}/{trial["game_name"]}-level-{(index % 10)}.csv')
+    hw_df.to_csv(f'data/processed/hw-study/{platform}/{trial["game_name"]}-level-{trial["iteration"]}.csv')

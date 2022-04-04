@@ -196,5 +196,43 @@
             6,
             2
         ]
+    },
+    {
+        "name": "AssassinCreed",
+        "params": {
+            "move_time": 0.5,
+            "kill_mode": "keyboard",
+            "window_names": [
+                "Assassin's Creed\u00ae Odyssey"
+            ]
+        },
+        "times_load": [
+            1,
+            0
+        ],
+        "times_level": [
+            7,
+            6
+        ]
+    },
+    {
+        "name": "LoL",
+        "params": {
+            "move_time": 0.0,
+            "kill_mode": "keyboard",
+            "window_names": [
+                "Riot Client Main",
+                "League of Legends"
+            ],
+            "no_fullscreen": true
+        },
+        "times_load": [
+            2,
+            0
+        ],
+        "times_level": [
+            14,
+            8
+        ]
     }
 ]

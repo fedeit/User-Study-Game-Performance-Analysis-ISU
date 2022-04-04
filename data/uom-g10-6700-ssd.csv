@@ -1,0 +1,86 @@
+ID;Name;Unit of Measurement
+/lpc/nct6798d/control/0;Fan Control #1;%
+/lpc/nct6798d/control/1;Fan Control #2;%
+/lpc/nct6798d/control/2;Fan Control #3;%
+/lpc/nct6798d/control/3;Fan Control #4;%
+/lpc/nct6798d/control/4;Fan Control #5;%
+/lpc/nct6798d/control/5;Fan Control #6;%
+/lpc/nct6798d/control/6;Fan Control #7;%
+/lpc/nct6798d/voltage/0;CPU VCore;V
+/lpc/nct6798d/voltage/1;Voltage #2;V
+/lpc/nct6798d/voltage/2;AVCC;V
+/lpc/nct6798d/voltage/3;3VCC;V
+/lpc/nct6798d/voltage/4;Voltage #5;V
+/lpc/nct6798d/voltage/5;Voltage #6;V
+/lpc/nct6798d/voltage/6;Voltage #7;V
+/lpc/nct6798d/voltage/7;3VSB;V
+/lpc/nct6798d/voltage/8;VBAT;V
+/lpc/nct6798d/voltage/9;VTT;V
+/lpc/nct6798d/voltage/10;Voltage #11;V
+/lpc/nct6798d/voltage/11;Voltage #12;V
+/lpc/nct6798d/voltage/12;Voltage #13;V
+/lpc/nct6798d/voltage/13;Voltage #14;V
+/lpc/nct6798d/voltage/14;Voltage #15;V
+/lpc/nct6798d/temperature/1;Temperature #1;Degrees Celsius
+/lpc/nct6798d/temperature/2;Temperature #2;Degrees Celsius
+/lpc/nct6798d/temperature/3;Temperature #3;Degrees Celsius
+/lpc/nct6798d/temperature/4;Temperature #4;Degrees Celsius
+/lpc/nct6798d/temperature/5;Temperature #5;Degrees Celsius
+/lpc/nct6798d/temperature/6;Temperature #6;Degrees Celsius
+/lpc/nct6798d/fan/1;Fan #2;RPM
+/lpc/nct6798d/fan/2;Fan #3;RPM
+/intelcpu/0/load/1;CPU Core #1;%
+/intelcpu/0/load/2;CPU Core #2;%
+/intelcpu/0/load/3;CPU Core #3;%
+/intelcpu/0/load/4;CPU Core #4;%
+/intelcpu/0/load/5;CPU Core #5;%
+/intelcpu/0/load/6;CPU Core #6;%
+/intelcpu/0/load/0;CPU Total;%
+/intelcpu/0/temperature/0;CPU Core #1;Degrees Celsius
+/intelcpu/0/temperature/1;CPU Core #2;Degrees Celsius
+/intelcpu/0/temperature/2;CPU Core #3;Degrees Celsius
+/intelcpu/0/temperature/3;CPU Core #4;Degrees Celsius
+/intelcpu/0/temperature/4;CPU Core #5;Degrees Celsius
+/intelcpu/0/temperature/5;CPU Core #6;Degrees Celsius
+/intelcpu/0/temperature/6;CPU Package;Degrees Celsius
+/intelcpu/0/clock/1;CPU Core #1;MHz
+/intelcpu/0/clock/2;CPU Core #2;MHz
+/intelcpu/0/clock/3;CPU Core #3;MHz
+/intelcpu/0/clock/4;CPU Core #4;MHz
+/intelcpu/0/clock/5;CPU Core #5;MHz
+/intelcpu/0/clock/6;CPU Core #6;MHz
+/intelcpu/0/power/0;CPU Package;W
+/intelcpu/0/power/1;CPU Cores;W
+/intelcpu/0/power/2;CPU Graphics;W
+/intelcpu/0/power/3;CPU DRAM;W
+/intelcpu/0/clock/0;Bus Speed;MHz
+/ram/load/0;Memory;%
+/ram/data/0;Used Memory;GB
+/ram/data/1;Available Memory;GB
+/atigpu/0/temperature/0;GPU Core;MHz
+/atigpu/0/temperature/1;GPU Memory;MHz
+/atigpu/0/temperature/2;GPU VRM Core;MHz
+/atigpu/0/temperature/4;GPU VRM Memory #1;MHz
+/atigpu/0/temperature/5;GPU VRM Memory #2;MHz
+/atigpu/0/temperature/9;GPU Hot Spot;MHz
+/atigpu/0/power/0;GPU Total;W
+/atigpu/0/fan/0;GPU Fan;RPM
+/atigpu/0/clock/0;GPU Core;MHz
+/atigpu/0/clock/1;GPU Memory;MHz
+/atigpu/0/clock/2;GPU SOC;MHz
+/atigpu/0/voltage/0;GPU Core;V
+/atigpu/0/voltage/1;GPU Memory;V
+/atigpu/0/voltage/2;GPU SOC;V
+/atigpu/0/load/0;GPU Core;%
+/atigpu/0/load/1;GPU Memory;%
+/atigpu/0/control/0;GPU Fan;RPM
+/hdd/0/level/0;Remaining Life;%
+/hdd/0/data/0;Total Bytes Written;GB
+/hdd/0/load/0;Used Space;%
+/hdd/0/temperature/0;Temperature;Degrees Celsius
+/hdd/0/factor/0;Write Amplification;Float Multiplier
+/hdd/1/level/0;Remaining Life;%
+/hdd/1/data/0;Total Bytes Written;GB
+/hdd/1/load/0;Used Space;%
+/hdd/1/temperature/0;Temperature;Degrees Celsius
+/hdd/1/factor/0;Write Amplification;Float Multiplier
