@@ -9,7 +9,7 @@ hearthstone = {
         'window_names': ['Battle.net', 'Hearthstone']
     },
     'times_load': [2, 1],
-    'times_level': [3, 2]
+    'times_level': [15, 2]
 }
 
 fortnite = {
@@ -44,7 +44,7 @@ minecraft = {
         'kill_mode' : 'keyboard'
     },
     'times_load': [2, 1],
-    'times_level': [4, 3]
+    'times_level': [5, 3]
 }
 
 apex = {
@@ -66,8 +66,8 @@ csgo = {
         'kill_mode' : 'os',
         'window_names': ['Counter-Strike: Global Offensive']
     },
-    'times_load': [2, 1],
-    'times_level': [5, 4]
+    'times_load': [2, 0],
+    'times_level': [6, 4]
 }
 
 r6 = {
@@ -88,8 +88,8 @@ civV = {
         'kill_mode' : 'None',
         'window_names': ['Civilization V']
     },
-    'times_load': [2, 1],
-    'times_level': [5, 4]
+    'times_load': [3, 1],
+    'times_level': [11 4]
 }
 
 civVI = {
@@ -145,7 +145,7 @@ assassincreed = {
         'kill_mode' : 'keyboard',
         'window_names': ['Assassin\'s Creed® Odyssey']
     },
-    'times_load': [1, 0],
+    'times_load': [3 0],
     'times_level': [7, 6]
 }
 
