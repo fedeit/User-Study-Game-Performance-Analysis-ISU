@@ -89,7 +89,7 @@ civV = {
         'window_names': ['Civilization V']
     },
     'times_load': [3, 1],
-    'times_level': [11 4]
+    'times_level': [11, 4]
 }
 
 civVI = {
@@ -145,7 +145,7 @@ assassincreed = {
         'kill_mode' : 'keyboard',
         'window_names': ['Assassin\'s Creed® Odyssey']
     },
-    'times_load': [3 0],
+    'times_load': [3, 0],
     'times_level': [7, 6]
 }
 
